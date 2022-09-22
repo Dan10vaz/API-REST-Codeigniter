@@ -15,6 +15,7 @@
 
         </div>
         <div class="app">
+            <h1>Iniciamos</h1>
             <?php echo $contenido; ?>
         </div>
     </div>
