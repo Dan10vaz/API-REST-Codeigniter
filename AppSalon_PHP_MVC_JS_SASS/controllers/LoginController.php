@@ -60,11 +60,21 @@ class LoginController
                     $email = new Email($usuario->nombre, $usuario->email, $usuario->token);
                     $email->enviarConfirmacion();
 
-                    debuguear($usuario);
+                    /* debuguear($usuario); */
+                    //Crear el usuario
+                    $resultado = $usuario->guardar();
+                    if ($resultado) {
+                        header('Location: /mensaje');
+                    }
                 }
             }
         }
 
         $router->render('auth/crear-cuenta', ['usuario' => $usuario, 'alertas' => $alertas]);
+    }
+
+    public static function mensaje(Router $router)
+    {
+        $router->render('auth/mensaje');
     }
 }
